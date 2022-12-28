@@ -45,7 +45,7 @@ func main() {
 			}
 		}
 
-		for item, _ := range items {
+		for item := range items {
 			score += priorityMap[item]
 		}
 	}
