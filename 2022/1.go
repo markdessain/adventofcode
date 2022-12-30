@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -19,15 +20,13 @@ func main() {
 
 	index := 0
 	currentCount := 0
-	maxCount := 0
+	allCount := []int{}
 
 	for scanner.Scan() {
 		line := scanner.Text()
 
 		if line == "" {
-			if currentCount > maxCount {
-				maxCount = currentCount
-			}
+			allCount = append(allCount, currentCount)
 			currentCount = 0
 			index += 1
 		} else {
@@ -41,7 +40,15 @@ func main() {
 		}
 	}
 
-	fmt.Println(maxCount)
-	fmt.Println(index)
+	sort.Ints(allCount)
+
+	fmt.Println(allCount[len(allCount)-1])
+
+	topThree := 0
+
+	for _, c := range allCount[len(allCount)-3:] {
+		topThree += c
+	}
+	fmt.Println(topThree)
 
 }
