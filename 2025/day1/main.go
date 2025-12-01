@@ -6,6 +6,10 @@ import (
 	"strings"
 )
 
+func main() {
+	fmt.Println(Run(``, 50))
+}
+
 func Run(lines string, dial int) (int, int) {
 
 	timesZero := 0
@@ -18,6 +22,8 @@ func Run(lines string, dial int) (int, int) {
 		if err != nil {
 			fmt.Println(err)
 		}
+
+		number = number % 100
 
 		if direction == 'R' {
 			if dial+number > 99 {

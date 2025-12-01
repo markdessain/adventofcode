@@ -52,6 +52,17 @@ R5`
 	}
 }
 
+func TestLoop(t *testing.T) {
+	dial := 5
+	data := `L200`
+
+	expected := 5
+	actual, _ := Run(data, dial)
+
+	if actual != expected {
+		t.Errorf(`Actual = %v, Expected = %v`, actual, expected)
+	}
+}
 func TestExample(t *testing.T) {
 	dial := 50
 	data := `L68
